@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+  <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body class="bg-light p-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h3 class="fw-bold m-0">Daftar Pasien IGD</h3>
+    <button class="btn btn-primary d-flex align-items-center gap-2">
+      <i class="bi bi-plus"></i>Tambah Pasien</button>
+  </div>
+
+  <div class="row g-3">
+    <div class="col-md-4">
+      <div class="card position-relative shadow-sm">
+        <span class="badge bg-danger position-absolute top-0 end-0 m-2 px-3 py-2">
+          URGENT
+        </span>
+      <div class="card-body">
+        <h5 class="fw-bold mb-1">Budi Santoso</h5>
+        <p class="text-muted mb-2">Laki Laki - 45 Tahun</p>
+
+        <div class="d-flex justify-content-between">
+          <span class="fw-bold text-secondary">No.RM</span>
+          <span class="fw-bold">RM-009222</span>
+        </div>
+        
+        <div class="d-flex justify-content-between">
+          <span class="text-secondary">Antrian</span>
+          <span class="fw-bold">A-22</span>
+        </div>
+
+        <div class="d-flex justify-content-between gap-2">
+          <button class="btn btn-outline-primary w-100">Detail</button>
+          <button class="btn btn-primary w-100">Isi CPPT</button>
+        </div>
+      </div>
+    </div>
+    </div>
+
+     <div class="col-md-4">
+      <div class="card position-relative shadow-sm">
+        <span class="badge bg-success position-absolute top-0 end-0 m-2 px-3 py-2">
+          Selesai
+        </span>
+      <div class="card-body">
+        <h5 class="fw-bold mb-1">Dedi Kurniawan</h5>
+        <p class="text-muted mb-2">Laki Laki - 23 Tahun</p>
+
+        <div class="d-flex justify-content-between">
+          <span class="fw-bold text-secondary">No.RM</span>
+          <span class="fw-bold">RM-009278</span>
+        </div>
+
+          <div class="d-flex justify-content-between">
+          <span class="text-secondary">Antrian</span>
+          <span class="fw-bold">A-18</span>
+        </div>
+
+        <div class="d-flex justify-content-between gap-2">
+          <button class="btn btn-outline-primary w-100">Detail</button>
+          <button class="btn btn-success w-100">Lihat CPPT</button>
+        </div>
+      </div>
+    </div>
+    </div>
+
+     <div class="col-md-4">
+      <div class="card position-relative shadow-sm">
+        <span class="badge bg-warning position-absolute top-0 end-0 m-2 px-3 py-2">
+          Pemeriksaan
+        </span>
+      <div class="card-body">
+        <h5 class="fw-bold mb-1">Putri Wulandari</h5>
+        <p class="text-muted mb-2">Perempuan - 18 Tahun</p>
+
+        <div class="d-flex justify-content-between">
+          <span class="fw-bold text-secondary">No.RM</span>
+          <span class="fw-bold">RM-009872</span>
+        </div>
+
+          <div class="d-flex justify-content-between">
+          <span class="text-secondary">Antrian</span>
+          <span class="fw-bold">A-25</span>
+        </div>
+
+        <div class="d-flex justify-content-between gap-2">
+          <button class="btn btn-outline-primary w-100">Detail</button>
+          <button class="btn btn-primary w-100">Isi CPPT</button>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <div class="border bg-white rounded shadow-sm p-3 mt-3">
+    <div class="d-block bg-warning rounded shadow-sm p-3">
+      Ini List Pasien IGD Rawat inap
+    </div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nomor RM</th>
+          <th>Nama Pasien</th>
+          <th>Kamar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>0222</td>
+          <td>Eko Kurniawan</td>
+          <td>Flamboyan E022</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <div class="d-inline-block bg-danger rounded shadow-sm p-3">
+      Pasien IGD Exit (Meninggal)
+    </div>
+    <br>
+    <div class="d-flex mt-4 gap-2">
+      <div class="bg-info rounded text-white p-2">Flex 1</div>
+       <div class="bg-info rounded text-white p-2">Flex 2</div>
+        <div class="bg-info rounded text-white p-2">Flex 3</div>
+    </div>
+    <br>
+    <div class="d-grid mt-3 gap-2">
+      <div class="bg-secondary rounded p-2 shadow-sm">Grid 1</div>
+        <div class="bg-secondary p-2 rounded shadow-sm">Grid 2</div>
+    </div>
+
+    <div class="d-block d-md-none p-2 bg-danger text-white rounded mb-2 mt-2">
+      Hanya Tampil di Mobile
+    </div>
+    <div class="d-none bg-primary d-md-block p-2 text-white rounded mt-2">
+      Tampil Di Desktop
+    </div>
+    
+  </div>
+
+</body>
+</html>

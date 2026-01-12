@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <title>SIMRS - Color System Real Case</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="p-4 bg-light">
+
+  <h2 class="fw-bold mb-4 text-primary">Real Case: Color System untuk SIMRS</h2>
+
+  <!-- ========================================================= -->
+  <!-- 1. STATUS LABORATORIUM -->
+  <!-- ========================================================= -->
+  <h4 class="mb-3">1. Status Pemeriksaan Laboratorium</h4>
+
+  <ul class="list-group mb-4">
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      Hematologi Lengkap
+      <span class="badge bg-success">SELESAI</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      Urinalisa
+      <span class="badge bg-warning text-dark">MENUNGGU</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      Gula Darah
+      <span class="badge bg-danger">BELUM DIAMBIL</span>
+    </li>
+  </ul>
+
+  <hr>
+
+  <!-- ========================================================= -->
+  <!-- 2. STATUS TRIAGE IGD -->
+  <!-- ========================================================= -->
+  <h4 class="mb-3">2. Triage IGD</h4>
+
+  <div class="d-flex gap-3 mb-4">
+    <div class="p-3 bg-danger text-white rounded shadow-sm">
+      <b>⚠ Kategori Merah</b> — Gawat Darurat
+    </div>
+    <div class="p-3 bg-warning text-dark rounded shadow-sm">
+      <b>⚠ Kategori Kuning</b> — Urgent
+    </div>
+    <div class="p-3 bg-success text-white rounded shadow-sm">
+      <b>✔ Kategori Hijau</b> — Tidak Urgent
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- ========================================================= -->
+  <!-- 3. STATUS ANTRIAN POLIKLINIK -->
+  <!-- ========================================================= -->
+  <h4 class="mb-3">3. Status Antrian Poliklinik</h4>
+
+  <div class="row g-3 mb-4">
+
+    <div class="col-md-4">
+      <div class="border border-primary p-3 rounded">
+        <div class="fw-bold text-primary">Poli Anak</div>
+        <div class="display-6 fw-bold">A-12</div>
+        <span class="text-success">Dipanggil</span>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="border border-warning p-3 rounded">
+        <div class="fw-bold text-warning">Poli Umum</div>
+        <div class="display-6 fw-bold">U-45</div>
+        <span class="text-warning">Menunggu</span>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="border border-secondary p-3 rounded">
+        <div class="fw-bold text-secondary">Poli Gigi</div>
+        <div class="display-6 fw-bold">G-09</div>
+        <span class="text-muted">Selesai</span>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- ========================================================= -->
+  <!-- 4. STATUS PASIEN INAP -->
+  <!-- ========================================================= -->
+  <h4 class="mb-3">4. Status Rawat Inap</h4>
+
+  <div class="row g-3 mb-4">
+
+    <div class="col-md-3">
+      <div class="p-3 bg-info text-white rounded shadow-sm">
+        <b>Kamar 301</b><br> Pasien Baru Masuk
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="p-3 bg-success text-white rounded shadow-sm">
+        <b>Kamar 205</b><br> Stabil
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="p-3 bg-danger text-white rounded shadow-sm">
+        <b>Kamar 112</b><br> Butuh Observasi Ketat
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="p-3 bg-dark text-white opacity-75 rounded shadow-sm">
+        <b>Kamar 408</b><br> Pasien Pulang (Opacity)
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- ========================================================= -->
+  <!-- 5. ALERT & INFORMATION -->
+  <!-- ========================================================= -->
+  <h4 class="mb-3">5. Notifikasi Sistem SIMRS</h4>
+
+  <div class="alert alert-warning">
+    ⚠ <b>Stok obat Paracetamol hampir habis!</b> Segera lakukan restock.
+  </div>
+
+  <div class="alert alert-danger">
+    ❌ <b>Gagal memuat data riwayat pasien.</b> Periksa jaringan atau hubungi IT.
+  </div>
+
+  <div class="alert alert-info">
+    ℹ <b>Jadwal poli hari ini berubah.</b> Silakan cek kembali.
+  </div>
+
+  <hr>
+
+  <!-- ========================================================= -->
+  <!-- 6. REAL CASE OPACITY (BARU DITAMBAHKAN) -->
+  <!-- ========================================================= -->
+  <h4 class="mb-3">6. Pasien Di Panggil</h4>
+  <!-- 6.1 Pasien Non-Aktif -->
+
+  <!-- 6.4 Card Pasien Terpilih / Tidak -->
+  <div class="d-flex gap-3">
+    <div class="card p-3 shadow-sm opacity-50">
+      <b>Pasien 01</b>
+      <span class="text-muted">Tidak dipilih</span>
+    </div>
+
+    <div class="card p-3 shadow-sm border-primary">
+      <b>Pasien 02</b>
+      <span class="text-primary fw-bold">Terpilih</span>
+    </div>
+  </div>
+
+</body>
+</html>

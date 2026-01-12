@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>
+  <header class="bg-primary text-white p-4 mb-4">
+   <div class="container">
+      <h1 class="display-5 fw-bold">Dashboard Informasi</h1>
+      <p class="lead">Ini merupakan data summary dari aplikasi</p>
+   </div>
+  </header>
+   <div class="container">
+      <section class="mb-5">
+         <h2 class="h3 fw-bold text-uppercase">Status System</h2>
+         <p class="text-muted">Berikut adalah ringkasan status system pada aplikasi anda hari ini</p>
+         <div class="alert alert-info">
+            <strong class="text-primary">Note : </strong> Semua data diperbarui <span class="fw-bold">setiap 5 menit sekali</span>
+         </div>
+      </section>
+      <section class="mb-5">
+         <h3 class="h4">Ringkasan Hari Ini</h3>
+         <div class="row g-3">
+            <div class="col-md-4">
+               <div class="card p-3">
+                  <h4 class="fs-5 fw-bold text-success">150 Pengguna Aktif</h4>
+                  <p class="text-muted mb-0 lh-sm">Jumlah user yang login hari ini</p>
+               </div>
+            </div>
+            <div class="col-md-4">
+             <div class="card p-3">
+                 <h4 class="fs-5 fw-bold text-warning">34 Order Pending</h4>
+                 <p class="text-muted mb-0 lh-sm">Transaksi yang belum selesai</p>
+             </div>
+            </div>
+            <div class="col-md-4">
+               <div class="card p-3">
+                  <h4 class="fs-5 fw-bold text-danger">5 Error Sistem</h4>
+                  <p class="text-muted mb-0 lh-sm">Perlu pengecekan segera (urgennt)</p>
+               </div>
+            </div>
+         </div>
+      </section>
+      <section class="mb-3">
+         <h3 class="h4 mb-3">Data Aktivitas User</h3>
+         <table class="table table-bordered">
+            <thead class="table-light">
+               <tr>
+                  <th>Nama</th>
+                  <th>Status</th>
+                  <th>Aktivitas</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td class="text-capitalize">jaka prayudha</td>
+                  <td><span class="text-success fw-bold">Online</span></td>
+                  <td class="fst-italic">Update Product</td>
+               </tr>
+                <tr>
+                  <td class="text-capitalize">hafizh prayudha</td>
+                  <td><span class="text-danger fw-bold">Offline</span></td>
+                  <td class="fst-italic">Delete Product</td>
+               </tr>
+            </tbody>
+         </table>
+      </section>
+      <footer class="text-center text-muted mt-5 pb-4">
+         Dashboard v1.0 Dibuat sebagai contoh
+      </footer>
+   </div>
+</body>
+</html>

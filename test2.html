@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dashboard SIMRS - Advanced Version</title>
+
+<!-- BOOTSTRAP -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- ICON -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+<!-- CHART JS -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+    body { background: #eef1f5; }
+    .card { border-radius: 14px; }
+    .summary-card { font-size: 22px; font-weight: bold; }
+    .chart-container { height: 350px; }
+    .btn-range {
+        margin-right: 6px;
+        border-radius: 10px;
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+    .btn-range.active {
+        color: #fff !important;
+        background-color: #0d6efd !important;
+    }
+    
+</style>
+</head>
+
+<body class="p-4">
+
+<!-- TITLE -->
+<h2 class="fw-bold mb-4">📊 Dashboard SIMRS — Advanced Analytics</h2>
+
+<!-- FILTER RANGE -->
+<div class="card p-3 mb-4 shadow-sm">
+    <h5 class="fw-bold mb-3">Filter Tanggal Cepat</h5>
+
+   <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+    <button class="btn btn-outline-primary btn-range" onclick="setRange('today', event)">Today</button>
+    <button class="btn btn-outline-primary btn-range" onclick="setRange('7days', event)">Last 7 Days</button>
+    <button class="btn btn-outline-primary btn-range" onclick="setRange('30days', event)">Last 30 Days</button>
+    <button class="btn btn-outline-primary btn-range" onclick="setRange('month', event)">This Month</button>
+</div>
+
+    <hr>
+
+    <div class="row g-3">
+        <div class="col-md-3">
+            <label>Dari</label>
+            <input type="date" id="startDate" class="form-control">
+        </div>
+        <div class="col-md-3">
+            <label>Sampai</label>
+            <input type="date" id="endDate" class="form-control">
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-primary w-100 mt-4" onclick="renderCharts()">Apply</button>
+        </div>
+        <div class="col-md-2">
+        <a href="test3.html" class="btn btn-light mt-4 w-100">Lihat Data</a>
+        </div>
+    </div>
+</div>
+
+<!-- SUMMARY -->
+<div class="row g-3 mb-4">
+
+    <div class="col-md-3">
+        <div class="card shadow-sm p-3">
+            <div class="text-muted">Total Kunjungan</div>
+            <div id="sumKunjungan" class="summary-card text-primary"></div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card shadow-sm p-3">
+            <div class="text-muted">Total Pendapatan</div>
+            <div id="sumPendapatan" class="summary-card text-success"></div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card shadow-sm p-3">
+            <div class="text-muted">Rawat Jalan</div>
+            <div id="sumRJ" class="summary-card text-info"></div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card shadow-sm p-3">
+            <div class="text-muted">Rawat Inap</div>
+            <div id="sumRI" class="summary-card text-danger"></div>
+        </div>
+    </div>
+
+</div>
+
+<!-- CHARTS -->
+<div class="row g-4">
+
+    <div class="col-md-6">
+        <div class="card p-3 shadow-sm">
+            <h5 class="fw-bold">Trend Kunjungan Harian</h5>
+            <div class="chart-container">
+                <canvas id="chartKunjungan"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card p-3 shadow-sm">
+            <h5 class="fw-bold">Pendapatan Harian</h5>
+            <div class="chart-container">
+                <canvas id="chartPendapatan"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card p-3 shadow-sm">
+            <h5 class="fw-bold">Top 5 Poli Dengan Kunjungan Terbanyak</h5>
+            <div class="chart-container">
+                <canvas id="chartPoli"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card p-3 shadow-sm">
+            <h5 class="fw-bold">Bed Occupancy Rate (BOR) %</h5>
+            <div class="chart-container">
+                <canvas id="chartBOR"></canvas>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+/* -------------------------------------------------------------------
+   SAMPLE DATA SIMRS LEVEL REAL PROJECT
+------------------------------------------------------------------- */
+const simrsData = [
+    { tanggal: "2025-01-01", kunjungan: 122, obat: 410, pendapatan: 15400000, rj: 96, ri: 26, poli:{igd:22,anak:18,umum:40,bedah:20,kandungan:22}, bor:65 },
+    { tanggal: "2025-01-02", kunjungan: 138, obat: 520, pendapatan: 18300000, rj: 110, ri: 28, poli:{igd:30,anak:20,umum:35,bedah:28,kandungan:25}, bor:70 },
+    { tanggal: "2025-01-03", kunjungan: 95,  obat: 320, pendapatan: 9700000,  rj: 75, ri: 20, poli:{igd:18,anak:12,umum:40,bedah:10,kandungan:15}, bor:55 },
+    { tanggal: "2025-01-04", kunjungan: 175, obat: 650, pendapatan: 22500000, rj: 138, ri: 37, poli:{igd:45,anak:25,umum:50,bedah:30,kandungan:25}, bor:82 },
+    { tanggal: "2025-01-05", kunjungan: 130, obat: 480, pendapatan: 16000000, rj: 100, ri: 30, poli:{igd:28,anak:15,umum:45,bedah:20,kandungan:22}, bor:68 },
+    { tanggal: "2025-01-06", kunjungan: 210, obat: 720, pendapatan: 26000000, rj: 158, ri: 52, poli:{igd:60,anak:30,umum:70,bedah:35,kandungan:25}, bor:90 },
+    { tanggal: "2025-01-07", kunjungan: 185, obat: 690, pendapatan: 23000000, rj: 140, ri: 45, poli:{igd:55,anak:22,umum:65,bedah:28,kandungan:15}, bor:75 }
+];
+
+/* ---------------- QUICK DATE RANGE ---------------- */
+function setRange(type) {
+    // Today mengikuti tanggal terakhir pada data
+    let today = new Date(simrsData[simrsData.length - 1].tanggal);
+    let start = new Date(today);
+
+    // Reset active button
+    document.querySelectorAll(".btn-range").forEach(btn => btn.classList.remove("active"));
+
+    // Add active to clicked button
+    event.target.classList.add("active");
+
+    switch(type) {
+        case "today":
+            start = today;
+            break;
+        case "7days":
+            start.setDate(today.getDate() - 6);
+            break;
+        case "30days":
+            start.setDate(today.getDate() - 29);
+            break;
+        case "month":
+            start = new Date(today.getFullYear(), today.getMonth(), 1);
+            break;
+    }
+
+    // Apply date to inputs
+    document.getElementById("startDate").value = start.toISOString().split("T")[0];
+    document.getElementById("endDate").value   = today.toISOString().split("T")[0];
+
+    renderCharts();
+}
+
+/* ---------------- FILTER DATA ---------------- */
+function filterData() {
+    let s = document.getElementById("startDate").value;
+    let e = document.getElementById("endDate").value;
+    if (!s || !e) return simrsData;
+    return simrsData.filter(d => d.tanggal >= s && d.tanggal <= e);
+}
+
+/* ---------- GLOBAL ANIMATION SETTINGS ----------- */
+const animated = {
+    animation: {
+        duration: 1200,
+        easing: "easeInOutQuart",
+        delay: (ctx) => ctx.dataIndex * 80,
+    },
+    scales: {
+        y: {
+            ticks: { color: "#555" },
+            grid: { color: "rgba(0,0,0,.05)" }
+        },
+        x: {
+            ticks: { color: "#555" }
+        }
+    }
+};
+
+/* ---------------- CHART VARIABLES ---------------- */
+let chartKunjungan, chartPendapatan, chartPoli, chartBOR;
+
+/* ---------------- MAIN RENDER ---------------- */
+function renderCharts() {
+    const data = filterData();
+    const labels = data.map(d => d.tanggal);
+
+    // Destroy old charts
+    [chartKunjungan, chartPendapatan, chartPoli, chartBOR].forEach(c => c && c.destroy());
+
+    /* KUNJUNGAN LINE ANIMATED */
+    chartKunjungan = new Chart(document.getElementById("chartKunjungan"), {
+        type: "line",
+        data: {
+            labels,
+            datasets: [{
+                label: "Kunjungan",
+                data: data.map(d => d.kunjungan),
+                borderColor: "#0d6efd",
+                borderWidth: 3,
+                tension: .4,
+                fill: true,
+                backgroundColor: "rgba(13,110,253,.2)"
+            }]
+        },
+        options: animated
+    });
+
+    /* PENDAPATAN BAR ANIMATED */
+    chartPendapatan = new Chart(document.getElementById("chartPendapatan"), {
+        type: "bar",
+        data: {
+            labels,
+            datasets: [{
+                label: "Pendapatan",
+                data: data.map(d => d.pendapatan),
+                backgroundColor: "#198754",
+            }]
+        },
+        options: animated
+    });
+
+    /* TOP POLI */
+    const totalPoli = { igd:0, anak:0, umum:0, bedah:0, kandungan:0 };
+    data.forEach(d => {
+        totalPoli.igd += d.poli.igd;
+        totalPoli.anak += d.poli.anak;
+        totalPoli.umum += d.poli.umum;
+        totalPoli.bedah += d.poli.bedah;
+        totalPoli.kandungan += d.poli.kandungan;
+    });
+
+    chartPoli = new Chart(document.getElementById("chartPoli"), {
+        type: "bar",
+        data: {
+            labels: ["IGD", "Anak", "Umum", "Bedah", "Kandungan"],
+            datasets: [{
+                label: "Total Kunjungan",
+                data: Object.values(totalPoli),
+                backgroundColor: ["#dc3545","#0dcaf0","#0d6efd","#6f42c1","#fd7e14"]
+            }]
+        },
+        options: animated
+    });
+
+    /* BOR LINE CHART */
+    chartBOR = new Chart(document.getElementById("chartBOR"), {
+        type: "line",
+        data: {
+            labels,
+            datasets: [{
+                label: "BOR (%)",
+                data: data.map(d => d.bor),
+                borderColor: "#dc3545",
+                backgroundColor: "rgba(220,53,69,.2)",
+                borderWidth: 3,
+                tension: .4
+            }]
+        },
+        options: animated
+    });
+
+    updateSummary(data);
+}
+
+
+
+/* -------------- SUMMARY UPDATE --------------- */
+function updateSummary(data) {
+    document.getElementById("sumKunjungan").innerHTML =
+        data.reduce((a,b)=>a+b.kunjungan,0);
+
+    document.getElementById("sumPendapatan").innerHTML =
+        "Rp " + data.reduce((a,b)=>a+b.pendapatan,0).toLocaleString();
+
+    document.getElementById("sumRJ").innerHTML =
+        data.reduce((a,b)=>a+b.rj,0);
+
+    document.getElementById("sumRI").innerHTML =
+        data.reduce((a,b)=>a+b.ri,0);
+}
+
+
+/* FIRST LOAD */
+renderCharts();
+
+</script>
+
+</body>
+</html>

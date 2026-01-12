@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body class="p-4 bg-light">
+    <h2 class="fw-bold mb-4 text-primary">Real Case : Coloring System Untuk Healtcare Apps</h2>
+    <h4 class="mb-3">Status Pemeriksaan Laboratorium</h4>
+    <ul class="list-group mb-4">
+        <li class="list-group-item d-flex justify-content-between align-items-center">Darah Lengkap
+            <span class="badge bg-success">Selesai</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">Urine Test
+            <span class="badge bg-warning text-dark">Menunggu</span>
+        </li>
+        <l class="list-group-item d-flex justify-content-between align-items-center">Gula Darah
+            <span class="badge bg-danger">Belum Di Ambil</span>
+        </l>
+    </ul>
+    <hr>
+    <h4>Triage IGD</h4>
+    <div class="row">
+        <div class="col">
+            <div class="d-flex gap-3 mb-4">
+                    <div class="bg-danger p-3 text-white rounded shadow-sm">
+                        <strong>Kategori Merah</strong> - Gawat Darurat
+                    </div>
+                </div>
+        </div>
+        <div class="col">
+             <div class="d-flex gap-3 mb-4">
+       <div class="bg-warning p-3 rounded shadow-sm">
+         <strong>Kategori Kuning</strong> - Sedikit Gawat Darurat
+       </div>
+    </div>
+        </div>
+        <div class="col">
+             
+    <div class="d-flex gap-3 mb-4">
+       <div class="bg-success p-3 text-white rounded shadow-sm">
+         <strong>Kategori Hijau</strong> - Tidak Urgent
+       </div>
+    </div>
+        </div>
+    </div>
+    <hr>
+    <h4>Status Antrian</h4>
+    <div class="row g-3 mb-4">
+        <div class="col-md-4">
+            <div class="border border-primary p-3 rounded shadow-sm">
+                <div class="text-primary fw-bold text-uppercase">Poli Anak</div>
+                <div class="display-6 fw-bold">A-12</div>
+                <div class="text-success">Dipanggil</div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="border border-warning p-3 rounded shadow-sm">
+                <div class="text-warning fw-bold text-uppercase">Poli Penyakit Dalam</div>
+                <div class="display-6 fw-bold">A-20</div>
+                <div class="text-warning">Menunggu</div>
+            </div>
+        </div>
+         <div class="col-md-4">
+            <div class="border border-success p-3 rounded shadow-sm">
+                <div class="text-success fw-bold text-uppercase">Poli urologi</div>
+                <div class="display-6 fw-bold">A-20</div>
+                <div class="text-success">Selesai</div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <h4>Status Rawat Inap</h4>
+    <div class="row g-3 mb-4">
+        <div class="col-md-3">
+            <div class="bg-info p-3 text-white rounded shadow-sm">
+                <strong>Kamar 01 F</strong> <br> Pasien baru masuk
+            </div>
+        </div>
+          <div class="col-md-3">
+            <div class="bg-primary p-3 text-white rounded shadow-sm">
+                <strong>Kamar 22 G</strong> <br> Pasien Stabil (Aman)
+            </div>
+        </div>
+          <div class="col-md-3">
+            <div class="bg-danger p-3 text-white rounded shadow-sm">
+                <strong>Kamar 01 A</strong> <br> Pasien Gawat Darurat
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="bg-primary p-3 text-white rounded shadow-sm opacity-50">
+                <strong>Kamar 22 B</strong> <br> Pasien Persiapan Pulang
+            </div>
+        </div>
+    </div>
+    <hr>
+    <h4>Notifikasi SIMRS</h4>
+    <div class="alert alert-warning">
+       <strong> Stock Obat Paracetamol Hampir Habis !!</strong> Segera pesan untuk stock
+    </div>
+    <div class="alert alert-danger">
+<strong>Gagal Memuat Data Pasien</strong>, Periksa Jaringan atau Hubungi IT
+    </div>
+  
+  
+</body>
+</html>

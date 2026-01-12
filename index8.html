@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+  <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+   <div class="container">
+      <div class="card">
+         <div class="card-body">
+            <h5>Data Pasien</h5>
+            <table class="table table-striped">
+               <thead>
+                  <tr>
+                     <th>RM</th>
+                     <th>Nama Lengkap</th>
+                     <th>Berkas Pasien</th>
+                     <th>BPJS</th>
+                     <th>Skala Nyeri</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>1111</td>
+                     <td>Eko Setiawan</td>
+                     <td>
+                        <div class="input-group">
+                           <input type="file">
+                         <span class="input-group-text">
+                           <button class="btn btn-primary">Upload</button>
+                         </span>
+                        </div>
+                     </td>
+                     <td>
+                        <div class="form-check form-switch">
+                           <input type="checkbox" class="form-check-input">
+                        </div>
+                     </td>
+                     <td>
+                        <div class="d-flex align-items-center gap-2">
+                           <input type="range" class="form-range" id="nyeri" value="3" min="0" max="10">
+                           <span class="badge bg-warning text-dark" id="nyeriLabel">3</span>
+                        </div>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+      </div>
+   </div>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+
+<script>
+   function setupNyeri(idRange, idLabel) {
+      const range = document.getElementById(idRange);
+      const label = document.getElementById(idLabel);
+      range.addEventListener("input", ()=>{
+         const val = range.value;
+         label.textContent = val;
+         if(val<=3) label.className = "badge bg-success";
+         else if(val<=6) label.className = "badge bg-warning text-dark";
+         else label.className = "badge bg-danger"
+      });
+   }
+   setupNyeri("nyeri", "nyeriLabel");
+</script>
+
+</html>
